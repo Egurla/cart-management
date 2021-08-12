@@ -36,6 +36,7 @@ public class CartServiceImpl implements CartService {
 		CartDomain cartDomine = CartDtoMapper.cartRequestDtoToDomain(cart);
 		cartDomine.setId(UUID.randomUUID().toString());
 		CartDomain cartDomaine = cartRepository.save(cartDomine);
+		logger.debug("created cart data {}.");
 		CartResponse CartResponse = CartDtoMapper.DomaineToCartResponse(cartDomaine);
 		return CartResponse;
 	}
@@ -61,6 +62,7 @@ public class CartServiceImpl implements CartService {
 	public CartDomain getCartById(Long id) throws CartManagementException {
 		System.out.println("in service class id " + id);
 		Optional<CartDomain> result = cartRepository.findById(id);
+		logger.info("inside the getCartById && cartId :");
 		logger.debug("Getting cart data with cart id= {}.", id);
 		CartDomain cartDomaine =result.get();
 		/*
@@ -80,7 +82,9 @@ public class CartServiceImpl implements CartService {
 	public CartResponse updateCart(CartRequestDto cartRequestDto) {
 		CartDomain cartDomine = CartDtoMapper.cartRequestDtoToDomain(cartRequestDto);
 		CartDomain cartDomaine = cartRepository.save(cartDomine);
+		logger.info("inside the updateCart && cartId :");
 		CartResponse CartResponse = CartDtoMapper.DomaineToCartResponse(cartDomaine);
+		logger.debug("updated cart data {}.");
 		return CartResponse;
 	}
 

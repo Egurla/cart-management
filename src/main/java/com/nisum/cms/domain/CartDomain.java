@@ -9,6 +9,7 @@ import javax.annotation.Generated;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 import org.springframework.lang.NonNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,9 +24,9 @@ public class CartDomain {
 	@JsonProperty("_id")
 	private String id;
 	
-	@Id
 	@JsonProperty("cartId")
 	@NonNull
+	@MongoId
 	private long cartId;
 	private UUID userId;
 	private UUID guestId;

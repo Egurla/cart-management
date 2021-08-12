@@ -12,6 +12,6 @@ public interface CartRepository extends MongoRepository<CartDomain, Long>  {
 
    //CartDomain findByCartId(Long id);
 
-//CartDomaine findAllById(Long cartId);
+       Optional<CartDomain> findById(Long cartId);
 	
 }
